@@ -14,17 +14,18 @@ const StyledLabel = styled.label`
   margin-left: 5px;
 `;
 
-const Input = ({ name }) => {
+const Input = ({ type, name }) => {
   return (
     <>
       <StyledLabel htmlFor={name}>{name}</StyledLabel>
-      <StyledInput name={name} />
+      <StyledInput type={type} name={name} />
     </>
   );
 };
 
 Input.propTypes = {
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired
 };
 
 export default Input;

@@ -9,7 +9,7 @@ const SignIn = () => {
         <form>
           <Input type="text" name="Email" />
           <Input type="password" name="Password" />
-          <input type="submit" value="WyLSIJ" />
+          <button type="submit">wys</button>
         </form>
       </LoginForm>
     </>
