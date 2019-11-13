@@ -2,8 +2,8 @@ import { css } from "styled-components";
 
 const sizes = {
   large: 1024,
-  medium: 768,
-  small: 481
+  medium: 828,
+  small: 362
 };
 
 const media = Object.keys(sizes).reduce((acc, label) => {

@@ -6,31 +6,43 @@ import Title from "components/Title";
 
 const SignInWrapper = styled.div`
   position: absolute;
-  width: 100%;
+  width: 80%;
   display: flex;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   ${media.medium`
-    height: 50vh;
+    height: 80vh;
     width: 70vw;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    flex-direction: column;
+  `}
+
+  ${media.large`
+    flex-direction: row;
+    height: 50vh;
   `}
 `;
 
 const StyledImageContainer = styled.div`
   background-image: url("https://source.unsplash.com/featured/800x600/?gym");
-  object-fit: cover;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  box-shadow: ${({ theme }) => theme.shadows.default};
   position: relative;
-  top: -10%;
-  height: 120%;
-  width: 60%;
+  height: 100%;
+
+  ${media.large`
+    width: 60%;
+    top: -10%;
+    height: 120%;
+  `}
 `;
 
 const StyledFormWrapper = styled.div`
-  background-color: red;
+  box-shadow: ${({ theme }) => theme.shadows.container};
   flex-grow: 1;
-  padding: 1rem 3rem;
+  padding: 1rem 3rem 3rem;
 
   form {
     display: flex;

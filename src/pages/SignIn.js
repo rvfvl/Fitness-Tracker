@@ -1,6 +1,7 @@
 import React from "react";
 import LoginForm from "components/LoginForm";
 import Input from "components/Input";
+import Button from "components/Button";
 
 const SignIn = () => {
   return (
@@ -9,7 +10,7 @@ const SignIn = () => {
         <form>
           <Input type="text" name="Email" />
           <Input type="password" name="Password" />
-          <button type="submit">wys</button>
+          <Button type="submit">Sign In</Button>
         </form>
       </LoginForm>
     </>
