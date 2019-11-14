@@ -1,7 +1,9 @@
 const theme = {
   colors: {
     background: "#FAFAFA",
-    primary: "red"
+    heading: "#5D5C61",
+    primary: "#7395AE",
+    secondary: "#557A95"
   },
   shadows: {
     image: "0 0 4px 1px rgba(0, 0, 0, 0.3)",

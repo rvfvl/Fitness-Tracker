@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import media from "config/mediaQueries";
-import Title from "components/Title";
 
 const SignInWrapper = styled.div`
   position: absolute;
@@ -58,11 +57,7 @@ const LoginForm = ({ children }) => {
   return (
     <SignInWrapper>
       <StyledImageContainer />
-
-      <StyledFormWrapper>
-        <Title>Sign In</Title>
-        {children}
-      </StyledFormWrapper>
+      <StyledFormWrapper>{children}</StyledFormWrapper>
     </SignInWrapper>
   );
 };
