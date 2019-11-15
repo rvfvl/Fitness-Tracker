@@ -7,6 +7,7 @@ import media from "config/mediaQueries";
 const UserTemplateWrapper = styled.div`
   display: flex;
   background-color: ${({ theme }) => theme.colors.background};
+  min-height: 100vh;
 `;
 
 const MainContentWrapper = styled.div`
