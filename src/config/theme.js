@@ -8,6 +8,9 @@ const theme = {
   shadows: {
     image: "0 0 4px 1px rgba(0, 0, 0, 0.3)",
     container: "0 0 10px rgba(0, 0, 0, 0.5)"
+  },
+  componentSizes: {
+    sidePanel: "75px"
   }
 };
 

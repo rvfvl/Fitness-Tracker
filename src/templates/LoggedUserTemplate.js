@@ -10,19 +10,21 @@ const UserTemplateWrapper = styled.div`
 `;
 
 const MainContentWrapper = styled.div`
-  padding: 1rem;
   width: 100%;
   display: grid;
   grid-gap: 1rem;
+  margin-left: ${({ theme }) => theme.componentSizes.sidePanel};
 
   ${media.medium`
-    margin: 1rem;
+    margin: 1rem 1rem 1rem calc(1rem + ${({ theme }) =>
+      theme.componentSizes.sidePanel});
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
   `}
 
   ${media.large`
-    margin: 2.5rem;
+    margin: 2rem 2rem 2rem calc(2.5rem + ${({ theme }) =>
+      theme.componentSizes.sidePanel});
   `}
 `;
 

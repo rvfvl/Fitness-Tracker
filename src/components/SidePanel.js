@@ -6,9 +6,12 @@ import Logo from "components/Logo";
 import Icon from "components/Icon";
 
 const SidePanelWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
   display: flex;
   flex-direction: column;
-  height: 100vh;
   width: 75px;
   background-color: ${({ theme }) => theme.colors.primary};
   border-right: 3px solid ${({ theme }) => theme.colors.heading};
