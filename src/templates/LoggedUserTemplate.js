@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import SidePanel from "components/SidePanel";
 import styled from "styled-components";
+import media from "config/mediaQueries";
 
 const UserTemplateWrapper = styled.div`
   display: flex;
@@ -9,11 +10,20 @@ const UserTemplateWrapper = styled.div`
 `;
 
 const MainContentWrapper = styled.div`
-  margin: 1rem;
   padding: 1rem;
-  box-shadow: ${({ theme }) => theme.shadows.image};
-  background-color: #fff;
   width: 100%;
+  display: grid;
+  grid-gap: 1rem;
+
+  ${media.medium`
+    margin: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  `}
+
+  ${media.large`
+    margin: 2.5rem;
+  `}
 `;
 
 const LoggedUserTemplate = ({ children }) => {
