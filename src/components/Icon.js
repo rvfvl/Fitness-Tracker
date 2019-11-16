@@ -24,6 +24,10 @@ const StyledIcon = styled(NavLink)`
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.secondary};
+
+    svg {
+      color: #fff;
+    }
   }
 `;
 

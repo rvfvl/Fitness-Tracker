@@ -16,11 +16,11 @@ const StyledLabel = styled.label`
   color: ${({ theme }) => theme.colors.secondary};
 `;
 
-const Input = ({ type, name }) => {
+const Input = (props, { name }) => {
   return (
     <>
       <StyledLabel htmlFor={name}>{name}</StyledLabel>
-      <StyledInput type={type} name={name} />
+      <StyledInput {...props} />
     </>
   );
 };
