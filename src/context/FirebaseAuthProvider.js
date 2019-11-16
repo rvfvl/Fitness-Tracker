@@ -5,7 +5,7 @@ import firebase from "config/firebase";
 export const FirebaseAuthContext = createContext();
 
 const FirebaseAuthProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState(null);
 
   firebase.auth().onAuthStateChanged(user => setCurrentUser(user));
 
