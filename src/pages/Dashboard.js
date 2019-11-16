@@ -1,11 +1,8 @@
 import React from "react";
 import LoggedUserTemplate from "templates/LoggedUserTemplate";
 import Container from "components/Container";
-import app from "config/firebase";
 
 const Dashboard = () => {
-  console.log(app.auth());
-
   return (
     <LoggedUserTemplate>
       <Container row="2">

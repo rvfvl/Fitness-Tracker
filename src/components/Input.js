@@ -16,7 +16,9 @@ const StyledLabel = styled.label`
   color: ${({ theme }) => theme.colors.secondary};
 `;
 
-const Input = (props, { name }) => {
+const Input = props => {
+  const { name } = props;
+
   return (
     <>
       <StyledLabel htmlFor={name}>{name}</StyledLabel>
