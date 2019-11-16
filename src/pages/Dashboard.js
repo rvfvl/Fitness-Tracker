@@ -4,7 +4,7 @@ import Container from "components/Container";
 import app from "config/firebase";
 
 const Dashboard = () => {
-  console.log(app);
+  console.log(app.auth());
 
   return (
     <LoggedUserTemplate>
