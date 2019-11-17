@@ -33,6 +33,7 @@ const StyledImageContainer = styled.div`
 
   ${media.large`
     width: 60%;
+    max-width: 60%;
     top: -10%;
     height: 120%;
   `}

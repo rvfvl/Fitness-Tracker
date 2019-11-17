@@ -3,8 +3,7 @@ import firebase from "config/firebase";
 
 const useFirebaseAuth = () => {
   const [errorMessage, setErrorMessage] = useState({
-    isError: false,
-    message: ""
+    isError: false
   });
 
   const signUserInUsingFirebase = (email, password) =>

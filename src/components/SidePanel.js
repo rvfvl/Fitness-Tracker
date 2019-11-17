@@ -30,12 +30,20 @@ const SidePanel = () => {
       <Logo to="/">Fitness Tracker</Logo>
 
       <MenuIconContainer>
-        <Icon icon={FaHome} path="/" />
-        <Icon icon={FaWeight} path="/sdsd" />
-        <Icon icon={FaHome} path="/sdsd" />
+        <Icon to="/">
+          <FaHome />
+        </Icon>
+        <Icon to="/sdsd">
+          <FaWeight />
+        </Icon>
+        <Icon to="/sdsd">
+          <FaHome />
+        </Icon>
       </MenuIconContainer>
 
-      <Icon icon={FiLogOut} path="/signin" />
+      <Icon to="/signin" onClick={signOutUser}>
+        <FiLogOut />
+      </Icon>
     </SidePanelWrapper>
   );
 };

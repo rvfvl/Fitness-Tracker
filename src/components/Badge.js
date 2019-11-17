@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 const Badge = styled.div`
   padding: 1rem;
+  margin: 1rem 0;
   color: #fff;
   border-radius: 2px;
 
@@ -26,11 +27,13 @@ const Badge = styled.div`
 `;
 
 Badge.propTypes = {
-  type: PropTypes.oneOf(["info", "danger", "success"]).isRequired
+  info: PropTypes.bool,
+  danger: PropTypes.bool,
+  success: PropTypes.bool
 };
 
 Badge.defaultProps = {
-  type: "info"
+  info: true
 };
 
 export default Badge;
