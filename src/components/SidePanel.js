@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import useFirebaseAuth from "hooks/useFirebaseAuth";
 import { FaHome, FaWeight } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import Logo from "components/Logo";
@@ -22,6 +23,8 @@ const MenuIconContainer = styled.div`
 `;
 
 const SidePanel = () => {
+  const [, , signOutUser] = useFirebaseAuth();
+
   return (
     <SidePanelWrapper>
       <Logo to="/">Fitness Tracker</Logo>

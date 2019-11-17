@@ -1,23 +1,19 @@
 import React, { useContext } from "react";
 import { FirebaseAuthContext } from "context/FirebaseAuthProvider";
-import firebase from "config/firebase";
+import useFirebaseAuth from "hooks/useFirebaseAuth";
 import useForm from "hooks/useForm";
 import LoginForm from "components/LoginForm";
 import Input from "components/Input";
 import Button from "components/Button";
 import Title from "components/Title";
 import Link from "components/Link";
+import Badge from "components/Badge";
 
 const SignIn = () => {
   const test = useContext(FirebaseAuthContext);
   console.log(test);
 
-  const signUserInUsingFirebase = (email, password) =>
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(user => console.log("Logged In", user))
-      .catch(error => console.log(error));
+  const [signUserInUsingFirebase, , , errorMessage] = useFirebaseAuth();
 
   const [handleSubmit, handleChange, values] = useForm(() =>
     signUserInUsingFirebase(values.Email, values.Password)
@@ -43,6 +39,7 @@ const SignIn = () => {
           <Link to="/signup">Don&apos;t have an account? Sign up here!</Link>
           <Button type="submit">Sign In</Button>
         </form>
+        {errorMessage.message ? <Badge /> : null}
       </LoginForm>
     </>
   );
