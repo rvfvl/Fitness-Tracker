@@ -15,8 +15,9 @@ const SignIn = () => {
 
   const [signUserInUsingFirebase, , , errorMessage] = useFirebaseAuth();
 
-  const [handleSubmit, handleChange, values] = useForm(() =>
-    signUserInUsingFirebase(values.Email, values.Password)
+  const [handleSubmit, handleChange, values] = useForm(
+    () => signUserInUsingFirebase(values.Email, values.Password),
+    { Email: "", Password: "" }
   );
 
   return (

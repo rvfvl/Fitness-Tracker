@@ -10,8 +10,9 @@ import Link from "components/Link";
 const SignUp = () => {
   const [, createUserUsingFirebase] = useFirebaseAuth();
 
-  const [handleSubmit, handleChange, values] = useForm(() =>
-    createUserUsingFirebase(values.Email, values.Password)
+  const [handleSubmit, handleChange, values] = useForm(
+    () => createUserUsingFirebase(values.Email, values.Password),
+    { Email: "", Password: "" }
   );
 
   return (
