@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import PrivateRoute from "routes/PrivateRoute";
 import theme from "config/theme";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import FirebaseAuthProvider from "context/FirebaseAuthProvider";
@@ -20,7 +21,7 @@ const App = () => {
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <Switch>
-            <Route exact path="/" component={Dashboard} />
+            <PrivateRoute exact path="/" component={Dashboard} />
             <Route exact path="/signin" component={SignIn} />
             <Route exact path="/signup" component={SignUp} />
           </Switch>

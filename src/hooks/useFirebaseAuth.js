@@ -1,28 +1,31 @@
 import { useState } from "react";
 import firebase from "config/firebase";
+import { useHistory } from "react-router-dom";
 
 const useFirebaseAuth = () => {
+  const history = useHistory();
+
   const [errorMessage, setErrorMessage] = useState({
     isError: false
   });
 
-  const signUserInUsingFirebase = (email, password) =>
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(user => console.log("Logged In", user))
-      .catch(error =>
-        setErrorMessage({ isError: true, message: error.message })
-      );
+  const signUserInUsingFirebase = async (email, password) => {
+    try {
+      await firebase.auth().signInWithEmailAndPassword(email, password);
+      history.push("/");
+    } catch (error) {
+      setErrorMessage({ isError: true, message: error.message });
+    }
+  };
 
-  const createUserUsingFirebase = (email, password) =>
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(user => console.log("User Created", user))
-      .catch(error =>
-        setErrorMessage({ isError: true, message: error.message })
-      );
+  const createUserUsingFirebase = async (email, password) => {
+    try {
+      await firebase.auth().createUserWithEmailAndPassword(email, password);
+      history.push("/");
+    } catch (error) {
+      setErrorMessage({ isError: true, message: error.message });
+    }
+  };
 
   const signOutUser = () => firebase.auth().signOut();
 

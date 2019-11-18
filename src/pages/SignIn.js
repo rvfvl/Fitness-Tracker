@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { FirebaseAuthContext } from "context/FirebaseAuthProvider";
+import { Redirect } from "react-router-dom";
 import useFirebaseAuth from "hooks/useFirebaseAuth";
 import useForm from "hooks/useForm";
 import LoginForm from "components/LoginForm";
@@ -10,15 +11,18 @@ import Link from "components/Link";
 import Badge from "components/Badge";
 
 const SignIn = () => {
-  const test = useContext(FirebaseAuthContext);
-  console.log(test);
-
   const [signUserInUsingFirebase, , , errorMessage] = useFirebaseAuth();
 
   const [handleSubmit, handleChange, values] = useForm(
     () => signUserInUsingFirebase(values.Email, values.Password),
     { Email: "", Password: "" }
   );
+
+  const currentUser = useContext(FirebaseAuthContext);
+
+  if (currentUser) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <>

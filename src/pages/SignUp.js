@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
+import { FirebaseAuthContext } from "context/FirebaseAuthProvider";
+import { Redirect } from "react-router-dom";
 import useFirebaseAuth from "hooks/useFirebaseAuth";
 import useForm from "hooks/useForm";
 import LoginForm from "components/LoginForm";
@@ -15,6 +17,12 @@ const SignUp = () => {
     () => createUserUsingFirebase(values.Email, values.Password),
     { Email: "", Password: "" }
   );
+
+  const currentUser = useContext(FirebaseAuthContext);
+
+  if (currentUser) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <>
