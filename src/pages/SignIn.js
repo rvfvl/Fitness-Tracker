@@ -40,9 +40,7 @@ const SignIn = () => {
           <Link to="/signup">Don&apos;t have an account? Sign up here!</Link>
           <Button type="submit">Sign In</Button>
         </form>
-        {errorMessage.message ? (
-          <Badge danger>{errorMessage.message}</Badge>
-        ) : null}
+        {errorMessage.message && <Badge danger>{errorMessage.message}</Badge>}
       </LoginForm>
     </>
   );

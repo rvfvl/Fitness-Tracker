@@ -6,9 +6,10 @@ import Input from "components/Input";
 import Button from "components/Button";
 import Title from "components/Title";
 import Link from "components/Link";
+import Badge from "components/Badge";
 
 const SignUp = () => {
-  const [, createUserUsingFirebase] = useFirebaseAuth();
+  const [, createUserUsingFirebase, , errorMessage] = useFirebaseAuth();
 
   const [handleSubmit, handleChange, values] = useForm(
     () => createUserUsingFirebase(values.Email, values.Password),
@@ -35,6 +36,7 @@ const SignUp = () => {
           <Link to="/signin">Already registered? Sign in here!</Link>
           <Button type="submit">Sign Up</Button>
         </form>
+        {errorMessage.message && <Badge danger>{errorMessage.message}</Badge>}
       </LoginForm>
     </>
   );
