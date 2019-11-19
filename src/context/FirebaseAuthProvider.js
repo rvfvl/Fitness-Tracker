@@ -6,13 +6,17 @@ export const FirebaseAuthContext = createContext();
 
 const FirebaseAuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged(setCurrentUser);
+    firebase.auth().onAuthStateChanged(user => {
+      setCurrentUser(user);
+      setLoading(false);
+    });
   }, []);
 
   return (
-    <FirebaseAuthContext.Provider value={currentUser}>
+    <FirebaseAuthContext.Provider value={{ currentUser, loading }}>
       {children}
     </FirebaseAuthContext.Provider>
   );

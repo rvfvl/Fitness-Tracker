@@ -18,7 +18,7 @@ const SignIn = () => {
     { Email: "", Password: "" }
   );
 
-  const currentUser = useContext(FirebaseAuthContext);
+  const { currentUser } = useContext(FirebaseAuthContext);
 
   if (currentUser) {
     return <Redirect to="/" />;

@@ -4,7 +4,7 @@ import { Route, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const PrivateRoute = ({ component: Component, ...props }) => {
-  const currentUser = useContext(FirebaseAuthContext);
+  const { currentUser } = useContext(FirebaseAuthContext);
 
   return (
     <Route
