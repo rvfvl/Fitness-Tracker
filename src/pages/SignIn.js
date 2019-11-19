@@ -13,9 +13,12 @@ import Badge from "components/Badge";
 const SignIn = () => {
   const [signUserInUsingFirebase, , , errorMessage] = useFirebaseAuth();
 
-  const [handleSubmit, handleChange, values] = useForm(
-    () => signUserInUsingFirebase(values.Email, values.Password),
-    { Email: "", Password: "" }
+  const [handleSubmit, handleChange, { Email, Password }, error] = useForm(
+    () => signUserInUsingFirebase(Email.value, Password.value),
+    {
+      Email: { value: "", isRequired: true },
+      Password: { value: "", isRequired: true }
+    }
   );
 
   const { currentUser } = useContext(FirebaseAuthContext);
@@ -33,18 +36,19 @@ const SignIn = () => {
             onChange={handleChange}
             type="text"
             name="Email"
-            defaultValue={values.Email}
+            defaultValue={Email.value}
           />
           <Input
             onChange={handleChange}
             type="password"
             name="Password"
-            defaultValue={values.Password}
+            defaultValue={Password.value}
           />
           <Link to="/signup">Don&apos;t have an account? Sign up here!</Link>
           <Button type="submit">Sign In</Button>
         </form>
         {errorMessage.message && <Badge danger>{errorMessage.message}</Badge>}
+        {error !== "" && <Badge danger>{error}</Badge>}
       </LoginForm>
     </>
   );
