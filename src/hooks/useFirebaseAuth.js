@@ -18,9 +18,13 @@ const useFirebaseAuth = () => {
     }
   };
 
-  const createUserUsingFirebase = async (email, password) => {
+  const createUserUsingFirebase = async (email, password, username) => {
     try {
-      await firebase.auth().createUserWithEmailAndPassword(email, password);
+      const auth = firebase.auth();
+
+      await auth.createUserWithEmailAndPassword(email, password);
+      await auth.currentUser.updateProfile({ displayName: username });
+
       history.push("/");
     } catch (error) {
       setErrorMessage({ isError: true, message: error.message });
