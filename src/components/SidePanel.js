@@ -50,14 +50,11 @@ const SidePanel = () => {
       <Logo to="/">Fitness Tracker</Logo>
 
       <MenuIconContainer>
-        <Icon to="/">
+        <Icon exact to="/">
           <FaHome />
         </Icon>
-        <Icon to="/sdsd">
+        <Icon exact to="/measurements">
           <FaWeight />
-        </Icon>
-        <Icon to="/sdsd">
-          <FaHome />
         </Icon>
       </MenuIconContainer>
 
