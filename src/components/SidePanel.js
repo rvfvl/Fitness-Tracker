@@ -22,6 +22,26 @@ const MenuIconContainer = styled.div`
   margin-bottom: auto;
 `;
 
+const StyledLogOutButton = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+
+  svg {
+    width: 25px;
+    height: 25px;
+    color: #fff;
+  }
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.secondary};
+
+    svg {
+      color: #fff;
+    }
+  }
+`;
+
 const SidePanel = () => {
   const [, , signOutUser] = useFirebaseAuth();
 
@@ -41,9 +61,9 @@ const SidePanel = () => {
         </Icon>
       </MenuIconContainer>
 
-      <Icon to="/signin" onClick={signOutUser}>
+      <StyledLogOutButton onClick={signOutUser}>
         <FiLogOut />
-      </Icon>
+      </StyledLogOutButton>
     </SidePanelWrapper>
   );
 };
