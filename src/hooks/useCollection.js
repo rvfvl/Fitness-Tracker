@@ -14,15 +14,15 @@ const useCollection = name => {
       .onSnapshot(
         snapshot => {
           const results = [];
-          snapshot.forEach(doc => results.push(doc.data()));
-          setLoading(false);
+          snapshot.forEach(doc => results.push({ id: doc.id, ...doc.data() }));
           setData(results);
+          setLoading(false);
         },
         err => setError(err)
       );
 
     return () => unsubscribe();
-  }, [name]);
+  }, []);
 
   return { data, error, loading };
 };

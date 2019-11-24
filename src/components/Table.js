@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const StyledTable = styled.table`
   width: 100%;
@@ -24,7 +25,7 @@ const StyledTable = styled.table`
   }
 `;
 
-const Table = () => {
+const Table = ({ data }) => {
   return (
     <StyledTable>
       <thead>
@@ -34,27 +35,33 @@ const Table = () => {
           <th>Chest</th>
           <th>Waist</th>
           <th>Hip</th>
-          <th>Hip</th>
+          <th>Biceps</th>
           <th>Thigh</th>
           <th>Forearm</th>
         </tr>
       </thead>
       <tbody>
-        {[...Array(10)].map((item, i) => (
-          <tr key={i}>
-            <td>22 November 2019</td>
-            <td>77</td>
-            <td>103</td>
-            <td>22</td>
-            <td>55</td>
-            <td>34</td>
-            <td>32</td>
-            <td>32</td>
-          </tr>
-        ))}
+        {data.map(
+          ({ id, date, weight, chest, waist, hip, biceps, thigh, forearm }) => (
+            <tr key={id}>
+              <td>{date}</td>
+              <td>{weight}</td>
+              <td>{chest}</td>
+              <td>{waist}</td>
+              <td>{hip}</td>
+              <td>{biceps}</td>
+              <td>{thigh}</td>
+              <td>{forearm}</td>
+            </tr>
+          )
+        )}
       </tbody>
     </StyledTable>
   );
+};
+
+Table.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default Table;
