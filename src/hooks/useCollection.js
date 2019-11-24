@@ -24,7 +24,11 @@ const useCollection = name => {
     return () => unsubscribe();
   }, []);
 
-  return { data, error, loading };
+  const addNewDatabaseRecord = () => {
+    console.log("ADDED NEW RECORD TO FIREBASE");
+  };
+
+  return { data, error, loading, addNewDatabaseRecord };
 };
 
 export default useCollection;

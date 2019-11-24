@@ -4,6 +4,12 @@ const useForm = (callback, initialValues) => {
   const [values, setValues] = useState(initialValues);
   const [error, setError] = useState("");
 
+  const handleCallback = () => {
+    const defaultValues = initialValues;
+    setValues(defaultValues);
+    callback();
+  };
+
   const handleSubmit = event => {
     event.preventDefault();
 
@@ -13,7 +19,7 @@ const useForm = (callback, initialValues) => {
       ({ value, isRequired }) => value === "" && isRequired
     );
 
-    if (!isEmptyField ? callback() : setError("Fields cannot be empty"));
+    if (!isEmptyField ? handleCallback() : setError("Fields cannot be empty"));
   };
 
   const handleChange = event => {

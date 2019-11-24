@@ -6,6 +6,7 @@ const Badge = styled.div`
   margin: 1rem 0;
   color: #fff;
   border-radius: 2px;
+  max-width: 300px;
 
   ${({ info }) =>
     info &&

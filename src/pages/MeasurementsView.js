@@ -1,14 +1,29 @@
 import React from "react";
 import LoggedUserTemplate from "templates/LoggedUserTemplate";
 import useCollection from "hooks/useCollection";
+import useForm from "hooks/useForm";
 import Container from "components/Container";
 import Table from "components/Table";
 import LineChart from "components/LineChart";
+import Input from "components/Input";
+import Button from "components/Button";
+import Badge from "components/Badge";
 
 const MeasurementsView = () => {
-  const { data, loading } = useCollection("measurements");
+  const { data, loading, addNewDatabaseRecord } = useCollection("measurements");
 
-  console.log(data);
+  const [handleSubmit, handleChange, values, error] = useForm(
+    addNewDatabaseRecord,
+    {
+      Weight: { value: "", isRequired: true },
+      Chest: { value: "", isRequired: true },
+      Waist: { value: "", isRequired: true },
+      Hip: { value: "", isRequired: true },
+      Biceps: { value: "", isRequired: true },
+      Thigh: { value: "", isRequired: true },
+      Forearm: { value: "", isRequired: true }
+    }
+  );
 
   return (
     <LoggedUserTemplate>
@@ -16,6 +31,72 @@ const MeasurementsView = () => {
         <LineChart data={data} />
       </Container>
       <Container col="2">
+        <form
+          onSubmit={handleSubmit}
+          style={{ display: "flex", marginBottom: ".5rem", flexWrap: "wrap" }}
+        >
+          <Input
+            type="number"
+            min="1"
+            name="Weight"
+            placeholder="Weight (cm)"
+            onChange={handleChange}
+            value={values.Weight.value}
+          />
+          <Input
+            type="number"
+            min="1"
+            name="Chest"
+            placeholder="Chest (cm)"
+            onChange={handleChange}
+            value={values.Chest.value}
+          />
+          <Input
+            type="number"
+            min="1"
+            name="Waist"
+            placeholder="Waist (cm)"
+            onChange={handleChange}
+            value={values.Waist.value}
+          />
+          <Input
+            type="number"
+            min="1"
+            name="Hip"
+            placeholder="Hip (cm)"
+            onChange={handleChange}
+            value={values.Hip.value}
+          />
+          <Input
+            type="number"
+            min="1"
+            name="Biceps"
+            placeholder="Biceps (cm)"
+            onChange={handleChange}
+            value={values.Biceps.value}
+          />
+          <Input
+            type="number"
+            min="1"
+            name="Thigh"
+            placeholder="Thigh (cm)"
+            onChange={handleChange}
+            value={values.Thigh.value}
+          />
+          <Input
+            type="number"
+            min="1"
+            name="Forearm"
+            placeholder="Forearm (cm)"
+            onChange={handleChange}
+            value={values.Forearm.value}
+          />
+          <div style={{ flexBasis: "100%", margin: ".5rem 0" }}>
+            <Button type="submit">Add new record</Button>
+          </div>
+        </form>
+        {error !== "" && <Badge danger>{error}</Badge>}
+
         {loading ? "loading" : <Table data={data} />}
       </Container>
     </LoggedUserTemplate>
