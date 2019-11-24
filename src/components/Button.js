@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const Button = styled.button`
   font-weight: 700;
@@ -14,6 +14,13 @@ const Button = styled.button`
     background-color: ${({ theme }) => theme.colors.primary};
     color: white;
   }
+
+  ${({ actionBtn }) =>
+    actionBtn &&
+    css`
+      width: 30px;
+      height: 30px;
+    `}
 `;
 
 export default Button;

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import firebase from "config/firebase";
+import moment from "moment";
 
 const useCollection = name => {
   const [error, setError] = useState(false);
@@ -15,7 +16,7 @@ const useCollection = name => {
         snapshot => {
           const results = [];
           snapshot.forEach(doc => results.push({ id: doc.id, ...doc.data() }));
-          setData(results);
+          setData(results.reverse());
           setLoading(false);
         },
         err => setError(err)
@@ -24,11 +25,36 @@ const useCollection = name => {
     return () => unsubscribe();
   }, []);
 
-  const addNewDatabaseRecord = () => {
-    console.log("ADDED NEW RECORD TO FIREBASE");
+  const addNewDatabaseRecord = _data => {
+    const filteredData = Object.entries(_data).map(item => ({
+      name: item[0].toLowerCase(),
+      value: item[1].value
+    }));
+
+    const results = filteredData.reduce(
+      (obj, item) => Object.assign(obj, { [item.name]: item.value }),
+      {}
+    );
+
+    firebase
+      .firestore()
+      .collection(name)
+      .doc()
+      .set({
+        user_id: firebase.auth().currentUser.uid,
+        date: moment().format("D MMMM YYYY"),
+        ...results
+      });
   };
 
-  return { data, error, loading, addNewDatabaseRecord };
+  const deleteDocument = id =>
+    firebase
+      .firestore()
+      .collection(name)
+      .doc(id)
+      .delete();
+
+  return { data, error, loading, addNewDatabaseRecord, deleteDocument };
 };
 
 export default useCollection;

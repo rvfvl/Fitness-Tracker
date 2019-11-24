@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import Button from "components/Button";
 
 const StyledTable = styled.table`
   width: 100%;
@@ -25,7 +26,7 @@ const StyledTable = styled.table`
   }
 `;
 
-const Table = ({ data }) => {
+const Table = ({ data, deleteDocument }) => {
   return (
     <StyledTable>
       <thead>
@@ -38,6 +39,7 @@ const Table = ({ data }) => {
           <th>Biceps</th>
           <th>Thigh</th>
           <th>Forearm</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -52,6 +54,11 @@ const Table = ({ data }) => {
               <td>{biceps}</td>
               <td>{thigh}</td>
               <td>{forearm}</td>
+              <td>
+                <Button actionBtn onClick={() => deleteDocument(id)}>
+                  -
+                </Button>
+              </td>
             </tr>
           )
         )}
@@ -61,7 +68,8 @@ const Table = ({ data }) => {
 };
 
 Table.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object).isRequired
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  deleteDocument: PropTypes.func.isRequired
 };
 
 export default Table;

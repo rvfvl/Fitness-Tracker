@@ -10,10 +10,12 @@ import Button from "components/Button";
 import Badge from "components/Badge";
 
 const MeasurementsView = () => {
-  const { data, loading, addNewDatabaseRecord } = useCollection("measurements");
+  const { data, loading, addNewDatabaseRecord, deleteDocument } = useCollection(
+    "measurements"
+  );
 
   const [handleSubmit, handleChange, values, error] = useForm(
-    addNewDatabaseRecord,
+    () => addNewDatabaseRecord(values),
     {
       Weight: { value: "", isRequired: true },
       Chest: { value: "", isRequired: true },
@@ -37,14 +39,16 @@ const MeasurementsView = () => {
         >
           <Input
             type="number"
+            step="0.1"
             min="1"
             name="Weight"
-            placeholder="Weight (cm)"
+            placeholder="Weight (kg)"
             onChange={handleChange}
             value={values.Weight.value}
           />
           <Input
             type="number"
+            step="0.1"
             min="1"
             name="Chest"
             placeholder="Chest (cm)"
@@ -53,6 +57,7 @@ const MeasurementsView = () => {
           />
           <Input
             type="number"
+            step="0.1"
             min="1"
             name="Waist"
             placeholder="Waist (cm)"
@@ -61,6 +66,7 @@ const MeasurementsView = () => {
           />
           <Input
             type="number"
+            step="0.1"
             min="1"
             name="Hip"
             placeholder="Hip (cm)"
@@ -69,6 +75,7 @@ const MeasurementsView = () => {
           />
           <Input
             type="number"
+            step="0.1"
             min="1"
             name="Biceps"
             placeholder="Biceps (cm)"
@@ -77,6 +84,7 @@ const MeasurementsView = () => {
           />
           <Input
             type="number"
+            step="0.1"
             min="1"
             name="Thigh"
             placeholder="Thigh (cm)"
@@ -85,6 +93,7 @@ const MeasurementsView = () => {
           />
           <Input
             type="number"
+            step="0.1"
             min="1"
             name="Forearm"
             placeholder="Forearm (cm)"
@@ -97,7 +106,11 @@ const MeasurementsView = () => {
         </form>
         {error !== "" && <Badge danger>{error}</Badge>}
 
-        {loading ? "loading" : <Table data={data} />}
+        {loading ? (
+          "loading"
+        ) : (
+          <Table data={data} deleteDocument={deleteDocument} />
+        )}
       </Container>
     </LoggedUserTemplate>
   );
