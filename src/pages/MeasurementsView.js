@@ -8,6 +8,8 @@ import LineChart from "components/LineChart";
 import Input from "components/Input";
 import Button from "components/Button";
 import Badge from "components/Badge";
+import LoadingSpinner from "components/LoadingSpinner";
+import Title from "components/Title";
 
 const MeasurementsView = () => {
   const { data, loading, addNewDatabaseRecord, deleteDocument } = useCollection(
@@ -30,7 +32,13 @@ const MeasurementsView = () => {
   return (
     <LoggedUserTemplate>
       <Container col="2">
-        <LineChart data={data} />
+        {!data.length ? (
+          <Title>
+            You need at least one measurement record to produce a graph.
+          </Title>
+        ) : (
+          <LineChart data={data} />
+        )}
       </Container>
       <Container col="2">
         <form
@@ -107,7 +115,12 @@ const MeasurementsView = () => {
         {error !== "" && <Badge danger>{error}</Badge>}
 
         {loading ? (
-          "loading"
+          <LoadingSpinner
+            type="Triangle"
+            color="#00BFFF"
+            height={100}
+            width={100}
+          />
         ) : (
           <Table data={data} deleteDocument={deleteDocument} />
         )}

@@ -4,13 +4,13 @@ import moment from "moment";
 
 const sortArray = array =>
   array.sort((a, b) => {
-    return b.createdAt.localeCompare(a.createdAt);
+    return a.date.localeCompare(b.date);
   });
 
 const useCollection = name => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const unsubscribe = firebase
@@ -47,7 +47,6 @@ const useCollection = name => {
       .doc()
       .set({
         user_id: firebase.auth().currentUser.uid,
-        createdAt: moment().format(),
         date: moment().format("D MMMM YYYY"),
         ...results
       });

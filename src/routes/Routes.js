@@ -12,7 +12,15 @@ const Routes = () => {
   const { loading } = useContext(FirebaseAuthContext);
 
   if (loading) {
-    return <LoadingSpinner />;
+    return (
+      <LoadingSpinner
+        type="Triangle"
+        color="#00BFFF"
+        height={100}
+        width={100}
+        pageLoader
+      />
+    );
   }
 
   return (
