@@ -2,6 +2,11 @@ import { useState, useEffect } from "react";
 import firebase from "config/firebase";
 import moment from "moment";
 
+const sortArray = array =>
+  array.sort((a, b) => {
+    return b.createdAt.localeCompare(a.createdAt);
+  });
+
 const useCollection = name => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -16,7 +21,7 @@ const useCollection = name => {
         snapshot => {
           const results = [];
           snapshot.forEach(doc => results.push({ id: doc.id, ...doc.data() }));
-          setData(results.reverse());
+          setData(sortArray(results));
           setLoading(false);
         },
         err => setError(err)
@@ -42,6 +47,7 @@ const useCollection = name => {
       .doc()
       .set({
         user_id: firebase.auth().currentUser.uid,
+        createdAt: moment().format(),
         date: moment().format("D MMMM YYYY"),
         ...results
       });
