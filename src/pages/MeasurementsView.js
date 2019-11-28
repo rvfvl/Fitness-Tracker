@@ -33,7 +33,7 @@ const MeasurementsView = () => {
     <LoggedUserTemplate>
       <Container col="2">
         {!data.length ? (
-          <Title>
+          <Title fontSize="36px">
             You need at least one measurement record to produce a graph.
           </Title>
         ) : (

@@ -4,7 +4,7 @@ import moment from "moment";
 
 const sortArray = array =>
   array.sort((a, b) => {
-    return a.date.localeCompare(b.date);
+    return a.createdAt.localeCompare(b.createdAt);
   });
 
 const useCollection = name => {
@@ -47,6 +47,7 @@ const useCollection = name => {
       .doc()
       .set({
         user_id: firebase.auth().currentUser.uid,
+        createdAt: moment().format(),
         date: moment().format("D MMMM YYYY"),
         ...results
       });
