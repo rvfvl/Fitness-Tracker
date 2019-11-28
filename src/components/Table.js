@@ -61,13 +61,13 @@ const Table = ({ data, deleteDocument }) => {
             }) => (
               <tr key={id}>
                 <td>{date}</td>
-                <td>{weight}</td>
-                <td>{chest}</td>
-                <td>{waist}</td>
-                <td>{hip}</td>
-                <td>{biceps}</td>
-                <td>{thigh}</td>
-                <td>{forearm}</td>
+                <td>{weight}kg</td>
+                <td>{chest}cm</td>
+                <td>{waist}cm</td>
+                <td>{hip}cm</td>
+                <td>{biceps}cm</td>
+                <td>{thigh}cm</td>
+                <td>{forearm}cm</td>
                 <td>
                   <Button actionBtn onClick={() => deleteDocument(id)}>
                     -

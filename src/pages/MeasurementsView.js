@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import LoggedUserTemplate from "templates/LoggedUserTemplate";
 import useCollection from "hooks/useCollection";
 import useForm from "hooks/useForm";
@@ -10,11 +10,14 @@ import Button from "components/Button";
 import Badge from "components/Badge";
 import LoadingSpinner from "components/LoadingSpinner";
 import Title from "components/Title";
+import Tabs from "components/Tabs";
 
 const MeasurementsView = () => {
   const { data, loading, addNewDatabaseRecord, deleteDocument } = useCollection(
     "measurements"
   );
+
+  const [activeTab, setActiveTab] = useState("weight");
 
   const [handleSubmit, handleChange, values, error] = useForm(
     () => addNewDatabaseRecord(values),
@@ -32,12 +35,25 @@ const MeasurementsView = () => {
   return (
     <LoggedUserTemplate>
       <Container col="2">
+        <Tabs
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          tabs={[
+            "weight",
+            "chest",
+            "waist",
+            "hip",
+            "biceps",
+            "thigh",
+            "forearm"
+          ]}
+        />
         {!data.length ? (
           <Title fontSize="36px">
             You need at least one measurement record to produce a graph.
           </Title>
         ) : (
-          <LineChart data={data} />
+          <LineChart data={data} activeTab={activeTab} />
         )}
       </Container>
       <Container col="2">

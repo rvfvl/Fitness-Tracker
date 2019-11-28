@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   LineChart as LineReChart,
   Line,
@@ -9,7 +10,7 @@ import {
   Tooltip
 } from "recharts";
 
-const LineChart = ({ data }) => {
+const LineChart = ({ data, activeTab }) => {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <LineReChart
@@ -20,10 +21,15 @@ const LineChart = ({ data }) => {
         <XAxis dataKey="date" />
         <YAxis />
         <Tooltip />
-        <Line type="monotone" dataKey="weight" stroke="#8884d8" />
+        <Line type="monotone" dataKey={activeTab} stroke="#8884d8" />
       </LineReChart>
     </ResponsiveContainer>
   );
+};
+
+LineChart.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  activeTab: PropTypes.string.isRequired
 };
 
 export default LineChart;
