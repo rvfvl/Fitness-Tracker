@@ -10,7 +10,7 @@ const Dashboard = () => {
     <LoggedUserTemplate>
       <Container row="2">
         Welcome <strong>{currentUser.displayName}</strong>! <br />
-        {currentUser.uid}
+        ID usera do testów: {currentUser.uid}
       </Container>
       <Container />
       <Container />

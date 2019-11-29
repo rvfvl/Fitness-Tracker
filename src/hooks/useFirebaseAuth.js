@@ -33,12 +33,33 @@ const useFirebaseAuth = () => {
 
   const signOutUser = () => firebase.auth().signOut();
 
-  return [
+  const sendResetPasswordEmail = email => {
+    firebase
+      .auth()
+      .sendPasswordResetEmail(email)
+      .then(() =>
+        setErrorMessage({
+          isError: true,
+          message: "Email with password reset has been sent.",
+          type: "success"
+        })
+      )
+      .catch(error =>
+        setErrorMessage({
+          isError: true,
+          message: error.message,
+          type: "failure"
+        })
+      );
+  };
+
+  return {
     signUserInUsingFirebase,
     createUserUsingFirebase,
     signOutUser,
-    errorMessage
-  ];
+    errorMessage,
+    sendResetPasswordEmail
+  };
 };
 
 export default useFirebaseAuth;

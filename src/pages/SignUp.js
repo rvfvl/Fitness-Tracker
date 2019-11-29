@@ -11,7 +11,7 @@ import Link from "components/Link";
 import Badge from "components/Badge";
 
 const SignUp = () => {
-  const [, createUserUsingFirebase, , errorMessage] = useFirebaseAuth();
+  const { createUserUsingFirebase, errorMessage } = useFirebaseAuth();
 
   const [
     handleSubmit,

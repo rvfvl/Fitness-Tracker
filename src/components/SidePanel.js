@@ -43,7 +43,7 @@ const StyledLogOutButton = styled.div`
 `;
 
 const SidePanel = () => {
-  const [, , signOutUser] = useFirebaseAuth();
+  const { signOutUser } = useFirebaseAuth();
 
   return (
     <SidePanelWrapper>

@@ -6,6 +6,7 @@ import SignIn from "pages/SignIn";
 import SignUp from "pages/SignUp";
 import Dashboard from "pages/Dashboard";
 import MeasurementsView from "pages/MeasurementsView";
+import ResetPassword from "pages/ResetPassword";
 import LoadingSpinner from "components/LoadingSpinner";
 
 const Routes = () => {
@@ -30,6 +31,7 @@ const Routes = () => {
         <PrivateRoute exact path="/measurements" component={MeasurementsView} />
         <Route exact path="/signin" component={SignIn} />
         <Route exact path="/signup" component={SignUp} />
+        <Route exact path="/reset" component={ResetPassword} />
       </Switch>
     </BrowserRouter>
   );

@@ -43,6 +43,7 @@ const StyledFormWrapper = styled.div`
   box-shadow: ${({ theme }) => theme.shadows.container};
   flex-grow: 1;
   padding: 1rem 3rem 3rem;
+  background-color: #fff;
 
   form {
     display: flex;
