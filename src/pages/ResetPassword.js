@@ -8,6 +8,7 @@ import Title from "components/Title";
 import Input from "components/Input";
 import Button from "components/Button";
 import Badge from "components/Badge";
+import Link from "components/Link";
 
 const ResetPasswordWrapper = styled.div`
   position: absolute;
@@ -59,6 +60,9 @@ const ResetPassword = () => {
         <Button type="submit" style={{ marginTop: "1rem" }}>
           Reset Password
         </Button>
+        <div style={{ margin: "1rem 0" }}>
+          <Link to="/signin">Sign in</Link>
+        </div>
       </form>
       {error && <Badge danger>{error}</Badge>}
       {!error && showError()}

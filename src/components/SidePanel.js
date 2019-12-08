@@ -26,6 +26,7 @@ const StyledLogOutButton = styled.div`
   display: flex;
   justify-content: center;
   padding: 1rem 0;
+  cursor: pointer;
 
   svg {
     width: 25px;
